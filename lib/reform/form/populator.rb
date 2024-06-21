@@ -31,7 +31,7 @@ private
     form = options[:represented]
 
     deprecate_positional_args(form, @user_proc, options) do
-      @value.(form, options)
+      @value.(form, **options)
     end
   end
 
@@ -78,7 +78,7 @@ private
       return @user_proc.new if @user_proc.is_a?(Class) # handle populate_if_empty: Class. this excludes using Callables, though.
 
       deprecate_positional_args(form, @user_proc, options) do
-        @value.(form, options)
+        @value.(form, **options)
       end
     end
 

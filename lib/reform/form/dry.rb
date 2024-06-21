@@ -45,7 +45,7 @@ module Reform::Form::Dry
       class Builder < Array
         def initialize(array)
           super(array)
-          @validator = Dry::Validation.Form({}, &shift)
+          @validator = Dry::Validation.Form(**{}, &shift)
         end
 
         def validation_graph
@@ -59,7 +59,7 @@ module Reform::Form::Dry
           if empty?
             return validator
           end
-          build_graph(Dry::Validation.Schema(validator, {}, &shift))
+          build_graph(Dry::Validation.Schema(validator, **{}, &shift))
         end
       end
     end
